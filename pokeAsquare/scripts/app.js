@@ -1,3 +1,5 @@
+let score = 0;
+
 
 $('button').on('click', () => {
   console.log('click works');
@@ -28,9 +30,33 @@ const disappearSquares = (e) => {
       // e is short for event
       // e.currentTarget gives you the div
       // you are clicking on
+      const color =  $(e.currentTarget).css('background-color');
+
+      checkValidPoke(color);
+
       $(e.currentTarget).css('opacity', 0);
 
     }
+
+
+//lets write a function called (checkValidPoke)
+//that takes that color string
+//and if it is blue lets update a global score variable.
+const checkValidPoke = (colorAsString) => {
+
+
+  if(colorAsString === 'rgb(0, 0, 255)'){
+    //updating the score
+    score++
+  } else {
+    score--
+  }
+  // actuall updating on the DOM
+  $('h1').text('Scoreboard: ' + score);
+}
+
+
+
 
 
 //Now we have a bunch of blue squares,
