@@ -1,12 +1,40 @@
 let score = 0;
-
+let time = 10;
+let round = 1;
 
 $('button').on('click', () => {
   console.log('click works');
   // When the user clicks the button, populate the squares
   createSquares(30);
+  setTimer();
 
 });
+
+//now try to write a function called setTimer
+//thats starts an interval and countsdown to 0
+//and when it reaches 0 increase the round
+
+const setTimer = () => {
+  const interval = setInterval(() => {
+    time--;
+
+    if(time === 0){
+      clearInterval(interval);
+      round++
+
+      $('#round').text('round: ' + round);
+    }
+
+    $('#timer').text('Timer: ' + time + 's');
+
+
+
+  }, 1000)
+}
+
+
+
+
 
 
 // Create a function named createSquares, that takes
